@@ -1,0 +1,74 @@
+{
+  "name": "@arashi/token",
+  "version": "0.0.0-dev",
+  "description": "Arashi token package",
+  "main": "lib/api.js",
+  "types": "lib/api.d.ts",
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "include": "src/**/*.ts",
+    "extension": [
+      ".ts"
+    ]
+  },
+  "scripts": {
+    "clean": "rm -r lib",
+    "docs": "typedoc --options typedoc.json",
+    "unit": "ts-node ./spec/support/jasmine.ts",
+    "test": "npm run-script lint && nyc --reporter=lcov --reporter=text node --max_old_space_size=6144 -r ts-node/register ./spec/support/jasmine.ts",
+    "lint": "node --max_old_space_size=6144 ./node_modules/eslint/bin/eslint.js --ext .ts '?(src|spec)/**/*.ts' --cache",
+    "lint-fix": "node --max_old_space_size=6144 ./node_modules/eslint/bin/eslint.js --ext .ts '?(src|spec)/**/*.ts' --cache --fix",
+    "coverage": "nyc check-coverage",
+    "build": "npm run-script lint && tsc",
+    "changelog": "auto-changelog --output CHANGELOG.md -p --release-summary --ignore-commit-pattern chore --issue-pattern '[A-Z]+-\\d+' --issue-url https://totalpave.atlassian.net/browse/{id}",
+    "version": "npm run build && npm run changelog && git add CHANGELOG.md && git commit -m 'chore: changelog'",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arashijs/token.git"
+  },
+  "homepage": "https://github.com/arashijs/token.git",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "keywords": [
+    "web",
+    "api",
+    "storm",
+    "rest",
+    "object",
+    "oriented",
+    "breautek",
+    "arashi",
+    "nbsolutions"
+  ],
+  "author": "Norman Breau",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "source-map-support": "0.5.19",
+    "tslib": "2.0.3"
+  },
+  "contributors": [
+    {
+      "name": "Norman Breau",
+      "email": "norman@nbsolutions.ca"
+    }
+  ],
+  "devDependencies": {
+    "@totalpave/eslint-plugin": "4.0.0",
+    "@types/jasmine": "3.5.14",
+    "@types/node": "12.12.69",
+    "@typescript-eslint/eslint-plugin": "4.5.0",
+    "@typescript-eslint/parser": "4.5.0",
+    "auto-changelog": "2.2.1",
+    "eslint": "7.11.0",
+    "jasmine": "3.6.2",
+    "jasmine-spec-reporter": "6.0.0",
+    "nyc": "15.1.0",
+    "ts-node": "9.0.0",
+    "typedoc": "0.19.2",
+    "typescript": "4.0.3"
+  }
+}
