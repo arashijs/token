@@ -1,6 +1,6 @@
 {
   "name": "@arashi/token",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Arashi token package",
   "main": "lib/api.js",
   "types": "lib/api.d.ts",
